@@ -14,11 +14,11 @@ double area_of_triangle(struct coor n1 ,struct coor n2, struct coor n3){
 	double h = (n1.x) * (n2.y) + (n2.x) * (n3.y) + (n3.x) * (n1.y) - (n2.x) * (n1.y) - (n3.x) * (n2.y) - (n1.x) * (n3.y);
  	h = (h < 0) ? (-1 * h) : (h);
  	h /= 2;
-  return h;
-  }
+	return h;
+  	}
 
 int main(){
-  unsigned int n;
+  	unsigned int n;
 	double area = 0;
 	double perimetr = 0;
 
@@ -34,14 +34,14 @@ int i = 0;
 while(i < n){
  	printf("Enter the coordinates:\n");
 	scanf("%lf,%lf", &coordinates[i].x, &coordinates[i].y);
-  i++;
-  }
+  	i++;
+  	}
 
 // Perimeter is found in there.
 for(i = 0; i < n; i++){
 	perimetr += sqrt(((coordinates[i+1].x - coordinates[i].x) * (coordinates[i+1].x - coordinates[i].x)) + 
 			((coordinates[i+1].y - coordinates[i].y) * (coordinates[i+1].y - coordinates[i].y)));
-  }
+	}
 printf("\nPerimetr: %f \n", perimetr);
 
 
@@ -53,7 +53,7 @@ center.y = 0;
 for(i = 0; i < n; i++){
 	center.x += coordinates[i].x;
 	center.y += coordinates[i].y;
-  }
+  	}
 
 center.x = center.x/n;
 center.y = center.y/n;
@@ -62,19 +62,19 @@ center.y = center.y/n;
 for(i = 0; i < n; i++){
 	area += area_of_triangle(coordinates[i], coordinates[(i + 1) % n], center);
 	}
-printf("Area: %lf\n\n", area);
+	printf("Area: %lf\n\n", area);
   
 // Variables 
 	double a = 0;
 	double b = 0;
 	double c = 0;
-  double alfa = 0;
-  double cosine = 0;
+  	double alfa = 0;
+  	double cosine = 0;
 	double angle1 = 0;
 	int angle = 0;
 
-  // Calculate of the angles is started. 
-	// Cosine Law is used in there.
+// Calculate of the angles is started. 
+// Cosine Law is used in there.
 	for(i = 1; i < n+1; i++){
 	  
 		// Lengths of sides are calculated with coordinates.
