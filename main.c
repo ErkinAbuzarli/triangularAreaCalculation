@@ -6,21 +6,19 @@
 struct coor {
 	double x;
 	double y;
-};
+	};
 
 // This is an equation of triangle which is given with coordinates. 
 // Funktion is [Area = (x1 * y2) + (x2 * y3) + (x3 * y1) - (x2 * y1) - (x3 * y2) - (x1 * y3)]
-double area_of_triangle(struct coor n1 ,struct coor n2, struct coor n3)
-{
-  double h = (n1.x) * (n2.y) + (n2.x) * (n3.y) + (n3.x) * (n1.y) - (n2.x) * (n1.y) - (n3.x) * (n2.y) - (n1.x) * (n3.y);
-  h = (h < 0) ? (-1 * h) : (h);
-  h /= 2;
+double area_of_triangle(struct coor n1 ,struct coor n2, struct coor n3){
+	double h = (n1.x) * (n2.y) + (n2.x) * (n3.y) + (n3.x) * (n1.y) - (n2.x) * (n1.y) - (n3.x) * (n2.y) - (n1.x) * (n3.y);
+ 	h = (h < 0) ? (-1 * h) : (h);
+ 	h /= 2;
   return h;
-}
+  }
 
-int main()
-{
-	unsigned int n;
+int main(){
+  unsigned int n;
 	double area = 0;
 	double perimetr = 0;
 
@@ -31,42 +29,42 @@ int main()
 	struct coor coordinates[n];
 	struct coor center;
 	
-	// And we get coordinates of this shape.
-  int i = 0;
-  while(i < n){
-    printf("Enter the coordinates:\n");
-    scanf("%lf,%lf", &coordinates[i].x, &coordinates[i].y);
-    i++;
+// And we get coordinates of this shape.
+int i = 0;
+while(i < n){
+ 	printf("Enter the coordinates:\n");
+	scanf("%lf,%lf", &coordinates[i].x, &coordinates[i].y);
+  i++;
   }
 
-	// Perimeter is found in there.
-	for(i = 0; i < n; i++){
+// Perimeter is found in there.
+for(i = 0; i < n; i++){
 	perimetr += sqrt(((coordinates[i+1].x - coordinates[i].x) * (coordinates[i+1].x - coordinates[i].x)) + 
-				((coordinates[i+1].y - coordinates[i].y) * (coordinates[i+1].y - coordinates[i].y)));
+			((coordinates[i+1].y - coordinates[i].y) * (coordinates[i+1].y - coordinates[i].y)));
+  }
+printf("\nPerimetr: %f \n", perimetr);
+
+
+// Variables.
+center.x = 0;
+center.y = 0;
+
+// Below, the center of gravity is found.
+for(i = 0; i < n; i++){
+	center.x += coordinates[i].x;
+	center.y += coordinates[i].y;
+  }
+
+center.x = center.x/n;
+center.y = center.y/n;
+
+// And calculate the area of shape.
+for(i = 0; i < n; i++){
+	area += area_of_triangle(coordinates[i], coordinates[(i + 1) % n], center);
 	}
-	printf("\nPerimetr: %f \n", perimetr);
-
-
-	// Variables.
-	center.x = 0;
-	center.y = 0;
-
-	// Below, the center of gravity is found.
-	for(i = 0; i < n; i++){
-		center.x += coordinates[i].x;
-		center.y += coordinates[i].y;
-	
-	}
-	center.x = center.x/n;
-	center.y = center.y/n;
-
-  // And calculate the area of shape.
-	for(i = 0; i < n; i++){
-		area += area_of_triangle(coordinates[i], coordinates[(i + 1) % n], center);
-	}
-	printf("Area: %lf\n\n", area);
+printf("Area: %lf\n\n", area);
   
-	// Variables 
+// Variables 
 	double a = 0;
 	double b = 0;
 	double c = 0;
