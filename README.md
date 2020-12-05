@@ -3,8 +3,8 @@ A start point to calculate n edged geometric shape by dividing it to triangels.
 
 
 
-# Example of Program
-'''
+# Example of Program<br />
+<br />
 Enter how many sides of shape: 4 <br />
 Enter the coordinates:<br />
 0,0<br />
@@ -32,4 +32,3 @@ Shape like that:<br />
 
                 .  .
 
-'''
